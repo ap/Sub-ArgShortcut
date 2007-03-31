@@ -1,0 +1,28 @@
+Sub-ArgShortcut version 1.0
+
+This module encapsulates the logic required for functions that use default
+arguments, as many core Perl functions do. You only need to write code which
+modifies the elements of @_ in-place. This module will then layer the following
+two behaviours on top of your code:
+
+* If no arguments are given, the function will use C<$_> as its input.
+* If no return value is expected, it will modify its arguments in-place.
+
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
+
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2006, Aristotle Pagaltzis
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.

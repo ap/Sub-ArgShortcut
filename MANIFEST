@@ -1,0 +1,13 @@
+Build.PL
+Changes
+lib/Sub/ArgShortcut.pm
+lib/Sub/ArgShortcut/Attr.pm
+Makefile.PL
+MANIFEST
+META.yml			# Will be created by "make dist"
+README
+t/00.load.t
+t/01.function.t
+t/02.attribute.t
+t/pod-coverage.t
+t/pod.t

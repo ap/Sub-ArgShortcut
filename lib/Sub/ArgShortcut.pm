@@ -6,7 +6,7 @@ Sub::ArgShortcut - simplify writing functions that use default arguments
 
 =head1 VERSION
 
-This document describes Sub::ArgShortcut version 1.0
+This document describes Sub::ArgShortcut version 1.01
 
 =cut
 
@@ -14,59 +14,44 @@ This document describes Sub::ArgShortcut version 1.0
 
  use Sub::ArgShortcut::Attr;
 
- sub basename :ArgShortcut { s!.*/!! for @_ }
- 
- for ( '/path/to/foo', '/some/path/to/bar' ) {
-     print "Munging " . basename . "\n";
-     open my $fh, '<', $_ or die $!;
-     # ...
+ sub mychomp :ArgShortcut { chomp @_ }
+
+ while ( <> ) {
+	# make a chomped copy of $_ without modifying it
+	my $chomped_line = mychomp;
+	
+	# or, modify $_ in place
+	mychomp;
+
+	# ...
  }
 
 =head1 DESCRIPTION
 
-This module encapsulates the logic required for functions that use default arguments, as many core Perl functions do. You only need to write code which modifies the elements of C<@_> in-place. This module will then layer the following two behaviours on top of your code:
-
-=over 4
-
-=item *
-
-If no arguments are given, the function will use C<$_> as its input.
-
-=item *
-
-If no return value is expected, it will modify its arguments in-place.
-
-=back
+This module encapsulates the logic required for functions that assume C<$_> as their argument when called with an empty argument list, and which modify their arguments in void context but return modified copies in any other context. You only need to write code which modifies the elements of C<@_> in-place.
 
 =head2 C<argshortcut(&)>
 
-This function takes a code reference as input, wraps a function around it and returns a reference to that function. The code that is passed in should modify the values in C<@_> in whatever fashion desired. The returned wrapped function will do the same thing as the unwrapped function, but will assume C<$_> as its input when called with an empty argument list and will return modified copies of the argument list elements if called in any context other than void.
-
-The code from the L<synopsis|/SYNOPSIS> can therefore also be written like this:
+This function takes a code reference as input, wraps a function around it and returns a reference to that function. The code that is passed in should modify the values in C<@_> in whatever fashion desired. The function from the L<synopsis|/SYNOPSIS> could therefore also be written like this:
 
  use Sub::ArgShortcut;
-
- my $basename = argshortcut { s!.*/!! for @_ };
- 
- for ( '/path/to/foo', '/some/path/to/bar' ) {
-     print "Munging " . $basename->() . "\n";
-     open my $fh, '<', $_ or die $!;
-     # ...
- }
+ my $mychomp = argshortcut { chomp @_ };
 
 This function is exported by default.
 
 =head2 Sub::ArgShortcut::Attr and C<:ArgShortcut> - The attribute interface
 
-Instead of using L<argshortcut/C<argshortcut(&)>> to wrap a code reference, you can use an L<Attribute::Handler>-based interface to add Sub::ArgShortcut functionality to regular subs. Simply C<use Sub::Shortcut::Attr> instead of Sub::Shortcut, then request its behaviour using the C<:ArgShortcut> attribute on functions:
+Instead of using L<argshortcut|/C<argshortcut(&)>> to wrap a code reference, you can use an L<Attribute::Handler>-based interface to add Sub::ArgShortcut functionality to regular subs. Simply C<use> Sub::Shortcut::Attr instead of Sub::Shortcut, then request its behaviour using the C<:ArgShortcut> attribute on functions:
 
- sub basename :ArgShortcut { s!.*/!! for @_ }
+ sub mychomp :ArgShortcut { chomp @_ }
+
+ my $mychomp = sub :ArgShortcut { chomp @_ };
 
 =head1 BUGS AND LIMITATIONS
 
-No bugs have been reported.
+Passing an empty array to a shortcutting function will probably surprise you: assuming C<foo> is a function with C<:ArgShortcut> and C<@bar> is an empty array, then calling C<foo( @bar )> will cause C<foo> to operate on C<$_>! This is because C<foo> has no way of distinguishing whether it was called without any arguments or called with arguments that evaluate to an empty list.
 
-Please report any bugs or feature requests to L<mailto:bug-sub-argshortcut@rt.cpan.org>, or through the web interface at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=sub-argshortcut>.
+Please report any other bugs or feature requests to L<mailto:bug-sub-argshortcut@rt.cpan.org>, or through the web interface at L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=sub-argshortcut>.
 
 
 =head1 AUTHOR
@@ -91,7 +76,7 @@ IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY C
 
 package Sub::ArgShortcut;
 
-$VERSION = '1.0';
+$VERSION = '1.01';
 
 use strict;
 use warnings;

@@ -1,6 +1,9 @@
 Revision history for Sub-ArgShortcut
 
-1.0  Sat Mar 31 22:33:25 2007
+1.01  Sun Apr  8 01:48:33 CEST 2007
+        Improved documentation. Thanks to Juerd Waalboer.
+
+1.0   Sat Mar 31 22:33:25 CEST 2007
         Initial release.
 
 # vi:tw=72

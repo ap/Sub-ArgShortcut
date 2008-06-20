@@ -6,7 +6,7 @@ Sub::ArgShortcut - simplify writing functions that use default arguments
 
 =head1 VERSION
 
-This document describes Sub::ArgShortcut version 1.01
+This document describes Sub::ArgShortcut version 1.02
 
 =cut
 
@@ -61,7 +61,7 @@ Aristotle Pagaltzis  L<mailto:pagaltzis@gmx.de>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2006, Aristotle Pagaltzis. All rights reserved.
+Copyright (c) 2006-2008, Aristotle Pagaltzis. All rights reserved.
 
 This module is free software; you can redistribute it and/or modify it under the same terms as Perl itself. See L<perlartistic>.
 
@@ -76,7 +76,7 @@ IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING WILL ANY C
 
 package Sub::ArgShortcut;
 
-$VERSION = '1.01';
+$VERSION = '1.02';
 
 use strict;
 use warnings;

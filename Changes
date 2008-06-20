@@ -1,9 +1,27 @@
-Revision history for Sub-ArgShortcut
+=head1 Revision history for Sub-ArgShortcut
 
-1.01  Sun Apr  8 01:48:33 CEST 2007
-        Improved documentation. Thanks to Juerd Waalboer.
+=head2 1.02 (2008-06-20 23:29:09+0200)
 
-1.0   Sat Mar 31 22:33:25 CEST 2007
-        Initial release.
+=over 4
+
+=item * Add L<Attribute::Handlers> to the prerequisites for old perls.
+
+=back
+
+=head2 1.01 (2007-04-08 01:48:33+0200)
+
+=over 4
+
+=item * Improved documentation. Thanks to Juerd Waalboer.
+
+=back
+
+=head2 1.0 (2007-03-31 22:33:25+0200)
+
+=over 4
+
+=item * Initial release.
+
+=back
 
 # vi:tw=72

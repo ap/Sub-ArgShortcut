@@ -1,21 +1,21 @@
 ---
 name: Sub-ArgShortcut
-version: 1.01
+version: 1.02
 author:
   - 'Aristotle Pagaltzis <pagaltzis@gmx.de>'
 abstract: simplify writing functions that use default arguments
 license: perl
 resources:
   license: http://dev.perl.org/licenses/
-requires:
+build_requires:
   Test::More: 0
 provides:
   Sub::ArgShortcut:
     file: lib/Sub/ArgShortcut.pm
-    version: 1.01
+    version: 1.02
   Sub::ArgShortcut::Attr:
     file: lib/Sub/ArgShortcut/Attr.pm
-generated_by: Module::Build version 0.2805
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2

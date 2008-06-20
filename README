@@ -1,4 +1,4 @@
-Sub-ArgShortcut version 1.0
+Sub-ArgShortcut version 1.02
 
 This module encapsulates the logic required for functions that use default
 arguments, as many core Perl functions do. You only need to write code which
@@ -22,7 +22,7 @@ To install this module, run the following commands:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2006, Aristotle Pagaltzis
+Copyright (C) 2006-2008, Aristotle Pagaltzis
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

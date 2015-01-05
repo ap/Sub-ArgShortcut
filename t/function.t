@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More;
+use Test::More 0.88; # for done_testing
 use Sub::ArgShortcut;
 
 sub original() { 'original' }
@@ -9,13 +9,10 @@ sub modified() { 'modified' }
 
 my $test = argshortcut { $_ = modified for @_ };
 
-plan tests => my $num_tests;
-
 {
 	local $_ = original;
 	$test->();
 	is( $_, modified, 'in-place on $_' );
-	BEGIN { $num_tests += 1 }
 }
 
 {
@@ -23,7 +20,6 @@ plan tests => my $num_tests;
 	my $res = $test->();
 	is( $_,   original, 'nondestructive from $_' );
 	is( $res, modified, '...returned correctly' );
-	BEGIN { $num_tests += 2 }
 }
 
 {
@@ -32,7 +28,6 @@ plan tests => my $num_tests;
 	my @modified = ( modified ) x $num;
 	$test->( my @data = @original );
 	is_deeply( \@data, \@modified, 'in-place on params' );
-	BEGIN { $num_tests += 1 }
 }
 
 {
@@ -42,5 +37,6 @@ plan tests => my $num_tests;
 	my @res = $test->( my @data = @original );
 	is_deeply( \@data, \@original, 'non-destructive from params' );
 	is_deeply( \@res,  \@modified, '...returned correctly' );
-	BEGIN { $num_tests += 2 }
 }
+
+done_testing;

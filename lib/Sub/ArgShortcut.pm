@@ -33,6 +33,8 @@ sub import {
 
 __END__
 
+=pod
+
 =head1 SYNOPSIS
 
  use Sub::ArgShortcut::Attr;

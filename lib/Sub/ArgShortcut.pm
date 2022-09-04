@@ -2,7 +2,7 @@ use 5.006; use strict; use warnings;
 
 package Sub::ArgShortcut;
 
-our $VERSION = '1.021';
+our $VERSION = '1.022';
 
 sub argshortcut(&) {
 	my ( $code ) = @_;

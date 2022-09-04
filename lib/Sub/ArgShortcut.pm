@@ -4,8 +4,6 @@ package Sub::ArgShortcut;
 
 # ABSTRACT: simplify writing functions that use default arguments
 
-sub croak { require Carp; goto &Carp::croak }
-
 sub argshortcut(&) {
 	my ( $code ) = @_;
 	return sub {

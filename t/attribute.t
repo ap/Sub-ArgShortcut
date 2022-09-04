@@ -1,6 +1,5 @@
 #!/usr/bin/perl -T
-use strict;
-use warnings;
+use strict; use warnings;
 
 use Test::More;
 use Sub::ArgShortcut::Attr;

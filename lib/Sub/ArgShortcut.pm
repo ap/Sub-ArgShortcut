@@ -2,7 +2,7 @@ use 5.006; use strict; use warnings;
 
 package Sub::ArgShortcut;
 
-# ABSTRACT: simplify writing functions that use default arguments
+our $VERSION = '1.021';
 
 sub argshortcut(&) {
 	my ( $code ) = @_;
@@ -28,6 +28,14 @@ sub import {
 1;
 
 __END__
+
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Sub::ArgShortcut - simplify writing functions that use default arguments
 
 =head1 SYNOPSIS
 
@@ -86,3 +94,5 @@ assuming C<foo> is a function with C<:ArgShortcut> and C<@bar> is an empty
 array, then calling C<foo( @bar )> will cause C<foo> to operate on C<$_>! This
 is because C<foo> has no way of distinguishing whether it was called without
 any arguments or called with arguments that evaluate to an empty list.
+
+=cut
